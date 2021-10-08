@@ -1,0 +1,6 @@
+/home/yug/devel/exercise/Coursera/AlgoToolbox/SumOfTwoDigits/build/CMakeFiles/rebuild_cache.dir
+/home/yug/devel/exercise/Coursera/AlgoToolbox/SumOfTwoDigits/build/CMakeFiles/edit_cache.dir
+/home/yug/devel/exercise/Coursera/AlgoToolbox/SumOfTwoDigits/build/CMakeFiles/main.dir
+/home/yug/devel/exercise/Coursera/AlgoToolbox/SumOfTwoDigits/build/MaxSumOfTwoDigits/CMakeFiles/rebuild_cache.dir
+/home/yug/devel/exercise/Coursera/AlgoToolbox/SumOfTwoDigits/build/MaxSumOfTwoDigits/CMakeFiles/edit_cache.dir
+/home/yug/devel/exercise/Coursera/AlgoToolbox/SumOfTwoDigits/build/MaxSumOfTwoDigits/CMakeFiles/MaxSumOfTwoDigits.dir

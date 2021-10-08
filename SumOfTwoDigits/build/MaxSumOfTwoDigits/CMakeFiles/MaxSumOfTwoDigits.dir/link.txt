@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMaxSumOfTwoDigits.a  CMakeFiles/MaxSumOfTwoDigits.dir/MaxSumOfTwoDigits.cpp.o
+/usr/bin/ranlib libMaxSumOfTwoDigits.a
