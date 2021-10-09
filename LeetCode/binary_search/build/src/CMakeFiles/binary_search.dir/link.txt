@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbinary_search.a  CMakeFiles/binary_search.dir/binary_search.cpp.o
+/usr/bin/ranlib libbinary_search.a

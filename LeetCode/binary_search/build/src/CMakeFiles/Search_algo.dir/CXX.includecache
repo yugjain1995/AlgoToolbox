@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yug/devel/exercise/Coursera/AlgoToolbox/LeetCode/binary_search/src/binary_search.cpp
+binary_search.hpp
+/home/yug/devel/exercise/Coursera/AlgoToolbox/LeetCode/binary_search/src/binary_search.hpp
+
+/home/yug/devel/exercise/Coursera/AlgoToolbox/LeetCode/binary_search/src/binary_search.hpp
+iostream
+-
+vector
+-
+

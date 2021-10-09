@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbrute_search.a  CMakeFiles/brute_search.dir/brute_search.cpp.o
+/usr/bin/ranlib libbrute_search.a

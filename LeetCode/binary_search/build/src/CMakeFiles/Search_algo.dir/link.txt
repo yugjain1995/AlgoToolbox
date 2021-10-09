@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSearch_algo.a  CMakeFiles/Search_algo.dir/binary_search.cpp.o CMakeFiles/Search_algo.dir/brute_search.cpp.o
+/usr/bin/ranlib libSearch_algo.a
