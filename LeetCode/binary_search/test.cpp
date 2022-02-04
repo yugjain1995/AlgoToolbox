@@ -21,12 +21,18 @@ int main(){
 	
 	// Random target
 	int target;
+	
+	// Initialize seed
+	seed = time(NULL);
+	srand (seed);
+		
 	// Populate the vector and search for a number
 	while(1){
-		// Initialize seed
-		seed = time(NULL);
+		// Change seed
+		seed++;
 		srand (seed);
 		
+		cout << seed << "\n";
 		// Select the size of vector randomly between 5 and 20
 		s = rand() % 16 + 5;
 		
@@ -35,11 +41,11 @@ int main(){
 		
 		// Push more random numbers by adding random positive value to previous number
 		for (int i = 1; i < s; i++){
-		vec.push_back(vec[i-1]+(rand()%5));
+		vec.push_back(vec[i-1]+(rand()%5)+1); // +1 is added so that if rand() = 0 then the numbers are not repeted in the vector
 		}
 		
 		cout << "Vector: ";
-		for (int i = 1; i < s; i++){
+		for (int i = 0; i < s; i++){
 		cout << vec[i] << " ";
 		}
 		cout << "\n";
@@ -53,7 +59,7 @@ int main(){
 		cout << "Error: Result not same\n";
 		return -1;
 		}
-		
+		cout << endl;
 		//Clear the vector for next run
 		vec.clear();
 	}
