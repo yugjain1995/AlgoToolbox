@@ -15,8 +15,10 @@ For seperating build files from source it is advisable to create a seperate buil
 
 6) To run test
     ./test -r "number of rows" -c "number of columns" -k "number of cols of 1st mat and rows of 2nd mat"
+
 Eg- ./test -r "2" -c "2" -k "3"
-This implies multiply a 2*3 matrix with 3*2 ,=matrix to give 2*2 matrix
+
+This implies multiply a 2 * 3 matrix with 3 * 2 matrix to give 2 * 2 matrix
 
 7) To run example
     ./example
