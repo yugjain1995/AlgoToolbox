@@ -14,7 +14,7 @@ For seperating build files from source it is advisable to create a seperate buil
 5) make
 
 6) To run test
-    ./test -r <number of rows> -c <number of columns> -k <number of cols of 1st mat and rows of 2nd mat>
+    ./test -r "number of rows" -c "number of columns" -k "number of cols of 1st mat and rows of 2nd mat"
 
 7) To run example
     ./example
