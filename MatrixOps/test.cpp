@@ -1,7 +1,8 @@
 #include"myMatrix.h"
 #include <Eigen/Dense>
 #include<limits>
-#include <string> 
+#include <string>
+#include<tgmath.h>
 
 template<typename T>
 using MatrixX = Eigen::Matrix <T, Eigen::Dynamic, Eigen::Dynamic>;
@@ -141,5 +142,5 @@ int main(int argc, char** argv){
 
   compareMat(mulResult, emulResult);
 
-    return 0;
+  return 0;
 }
