@@ -78,7 +78,7 @@ This implies multiply a 2 * 3 matrix with 3 * 2 matrix to give 2 * 2 matrix
 
 # TODO:
 
-Matrix multiplication can be further improved by concept of blocking for cache effiient operations
+Matrix multiplication can be further improved by concept of blocking for cache efficient operations
 
 Another way to greatly improve performance is to use vectorization to exploit SIMD(Single-Instruction-Multiple-Data) feature in mordern processors
 
