@@ -1,21 +1,22 @@
 #include<iostream>
 
+template<typename T>
 class myMat{
   public:
-    float* data;
+    T* data;
     unsigned int row, col;
 
     myMat(unsigned int r, unsigned int c){
       row = r;
       col = c;
-      data = new float[row*col];
+      data = new T[row*col];
     }
 
-    myMat(unsigned int r, unsigned int c, float* a){
+    myMat(unsigned int r, unsigned int c, T* a){
       row = r;
       col = c;
 
-      data = new float[row*col];
+      data = new T[row*col];
       for(int i = 0; i < row; i++){
         for(int j = 0; j < col; j++){
           data[col*i + j] = a[col*i + j];
@@ -44,22 +45,20 @@ class myMat{
 
       for(int i = 0; i < row; i++){
         for(int j = 0; j < col; j++){
-            result.data[row*j+i] += data[col*i + j];
+            result.data[row*j+i] = data[col*i + j];
         }
       }
       return result;
     }
 
-    void display();
+    void display(){
+      std::cout << "\n";
+      for(int i = 0; i < row; i++){
+          for(int j = 0; j < col; j++){
+              std::cout << data[col*i + j] << "  ";
+          }
+          std::cout << "\n";
+      }
+    }
 
 };
-
-void myMat::display(){
-    std::cout << "\n";
-    for(int i = 0; i < row; i++){
-        for(int j = 0; j < col; j++){
-            std::cout << data[col*i + j] << "  ";
-        }
-        std::cout << "\n";
-    }
-}
