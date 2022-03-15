@@ -11,27 +11,27 @@ Author - Yug Jain
 /******************************************************************/
 int main()
 {
-    MyQueueByArray<int> t(10);
-    std::cout << "====================Testing Queue By Array=====================\n";
-    t.enQueue(10);
-    t.enQueue(20);
-    t.enQueue(30);
-    t.enQueue(40);
+  MyQueueByArray<int> t(10);
+  std::cout << "====================Testing Queue By Array=====================\n";
+  t.enQueue(10);
+  t.enQueue(20);
+  t.enQueue(30);
+  t.enQueue(40);
  
- while(!t.isEmpty()){
+  while(!t.isEmpty()){
     std::cout << t.deQueue()
          << " dequeued from queue\n";
- }
+  }
 
-    t.enQueue(10);
-    t.enQueue(20);
-    t.enQueue(30);
-    t.enQueue(40);
+  t.enQueue(10);
+  t.enQueue(20);
+  t.enQueue(30);
+  t.enQueue(40);
  
- while(!t.isEmpty()){
+  while(!t.isEmpty()){
     std::cout << t.deQueue()
          << " dequeued from queue\n";
- }
-    return 0;
+  }
+  return 0;
 }
 /******************************************************************/

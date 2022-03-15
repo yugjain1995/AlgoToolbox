@@ -188,18 +188,30 @@ MyQueueByArray<T>::~MyQueueByArray(){
 
 
 //===================================================================================
-// LINKED LIST IMPLEMENTATION OF QUEUE
+// Singly LINKED LIST NODE
 //===================================================================================
 
 /******************************************************************/
-// Class template
+// Templated struct
 /******************************************************************/
 template<typename T>
 struct Node{
   T data;
   Node<T>* next;
 };
+//===================================================================================
+// END
+//===================================================================================
 
+
+
+//===================================================================================
+// LINKED LIST IMPLEMENTATION OF QUEUE
+//===================================================================================
+
+/******************************************************************/
+// Class template
+/******************************************************************/
 template<typename T>
 class MyQueueByList{
   private:
@@ -326,6 +338,116 @@ MyQueueByList<T>::~MyQueueByList(){
 
 /******************************************************************/
 // Class template
+/******************************************************************/
+template<typename T>
+struct binaryNode{
+  T data;
+  binaryNode<T>* left;
+  binaryNode<T>* right;
+};
+
+template<typename T>
+class MyBinaryTree{
+  public:
+    binaryNode<T>* root;
+    MyBinaryTree();
+
+  // Adds node to the closest level to root with available vacancy form left to right
+    void addNodeLevel(T d);
+
+  // Delete the given node and put the deepest and far right node at deletion location
+    void deleteNode(T d);
+
+  // Search
+    void breadthSearch(T d);
+    void depthSearch(T d);
+
+    ~MyBinaryTree();
+};
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+MyBinaryTree<T>::MyBinaryTree(){
+  this->root = NULL;
+}
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+void MyBinaryTree<T>::addNodeLevel(T d){
+  if(this->root == NULL){
+    this->root = new binaryNode<T>;
+    this->root->data = d;
+  }
+
+  else{
+    MyQueueByList<binaryNode<T>*> q;
+    q.enQueue(this->root);
+    binaryNode<T>* temp;
+
+    while(!q.isEmpty()){
+      temp = q.deQueue();
+
+    // If left of node vacant put a node there
+      if(temp->left == NULL){
+        temp->left = new binaryNode<T>;
+        temp->left->data = d;
+        temp->left->left = NULL;
+        temp->left->right = NULL;
+        break;
+      }
+    // If left not vacant check if right vacant and put a node there
+      else if(temp->right == NULL){
+        temp->right = new binaryNode<T>;
+        temp->right->data = d;
+        temp->right->left = NULL;
+        temp->right->right = NULL;
+        break;
+      }
+    // Else put left and right node in queue to further explore
+      else{
+        q.enQueue(temp->left);
+        q.enQueue(temp->right);
+      }
+    }
+  }
+  
+}
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+void MyBinaryTree<T>::deleteNode(T d){
+  ;
+}
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+void MyBinaryTree<T>::breadthSearch(T d){
+  ;
+}
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+void MyBinaryTree<T>::depthSearch(T d){
+  ;
+}
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+MyBinaryTree<T>::~MyBinaryTree(){
+  ;
+}
 /******************************************************************/
 
 //===================================================================================

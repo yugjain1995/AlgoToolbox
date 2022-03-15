@@ -8,6 +8,9 @@ if(TEST_QUEUE_BY_ARRAY)
 elseif(TEST_QUEUE_BY_LIST)
   add_executable(test_queue test_queue_by_list.cpp)
   unset(TEST_QUEUE_BY_LIST CACHE)
+elseif(TEST_BINARY_TREE)
+  add_executable(test_queue test_binary_tree.cpp)
+unset(TEST_BINARY_TREE CACHE)
 endif()
 
 # Include
