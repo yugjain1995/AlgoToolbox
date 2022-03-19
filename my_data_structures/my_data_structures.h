@@ -223,8 +223,8 @@ class MyQueueByList{
     MyQueueByList();
     void enQueue(T d);
     T deQueue();
-    Node<int>* getHead() const;
-    Node<int>* getTail() const;  
+    Node<T>* getHead() const;
+    Node<T>* getTail() const;  
     unsigned int getSize() const;
     bool isEmpty() const;
     ~MyQueueByList();
@@ -252,7 +252,7 @@ class MyQueueByList{
 
 /******************************************************************/
   template <typename T>
-  Node<int>* MyQueueByList<T>::getHead() const{
+  Node<T>* MyQueueByList<T>::getHead() const{
     return this->head;
   }
 /******************************************************************/
@@ -260,7 +260,7 @@ class MyQueueByList{
 
 /******************************************************************/
   template <typename T>
-  Node<int>* MyQueueByList<T>::getTail() const{
+  Node<T>* MyQueueByList<T>::getTail() const{
     return this->tail;
   }
 /******************************************************************/
