@@ -25,6 +25,8 @@ int main()
   t.deleteNode(12);
   t.deleteNode(19);
   t.deleteNode(16);
+  t.deleteNode(16);
+  t.deleteNode(5);
   
 // Print binary tree
   q.enQueue(t.root);

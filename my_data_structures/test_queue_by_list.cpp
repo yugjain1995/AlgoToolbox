@@ -13,14 +13,16 @@ int main()
 {
   MyQueueByList<int> t;
   std::cout << "====================Testing Queue By List=====================\n";
-  t.enQueue(10);
-  t.enQueue(20);
-  t.enQueue(30);
-  t.enQueue(40);
+  for(int i = 1; i <= 4; i++){
+    t.enQueue(10*i);
+    std::cout << t.getTail()->data
+         << " is tail\n";
+  }
  
   while(!t.isEmpty()){
-    std::cout << t.deQueue()
+    std::cout << t.getHead()->data
          << " dequeued from queue\n";
+    t.deQueue();
   }
 
   t.enQueue(10);
@@ -30,8 +32,9 @@ int main()
   t.enQueue(40);
  
   while(!t.isEmpty()){
-    std::cout << t.deQueue()
+    std::cout << t.getHead()->data
          << " dequeued from queue\n";
+    t.deQueue();
   }
   
   return 0;

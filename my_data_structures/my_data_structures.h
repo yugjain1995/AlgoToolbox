@@ -223,6 +223,8 @@ class MyQueueByList{
     MyQueueByList();
     void enQueue(T d);
     T deQueue();
+    Node<int>* getHead() const;
+    Node<int>* getTail() const;  
     unsigned int getSize() const;
     bool isEmpty() const;
     ~MyQueueByList();
@@ -244,6 +246,22 @@ class MyQueueByList{
     this->size = 0;
     this->head = NULL;
     this->tail = NULL;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  Node<int>* MyQueueByList<T>::getHead() const{
+    return this->head;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  Node<int>* MyQueueByList<T>::getTail() const{
+    return this->tail;
   }
 /******************************************************************/
 
@@ -358,6 +376,9 @@ class MyBinaryTree{
   // Duplicates allowed
     void addNodeLevel(T d);
 
+  // Add not below the seleted node from tree
+    void addNodeBelow(T d, T selectNode);
+
   // Delete the given node and put the deepest and far right node at deletion location
   // Incase of duplicates in the tree only the deepeset and farthest right node will be
   // deleted 
@@ -420,6 +441,14 @@ void MyBinaryTree<T>::addNodeLevel(T d){
     }
   }
   
+}
+/******************************************************************/
+
+
+/******************************************************************/
+template<typename T>
+void MyBinaryTree<T>::addNodeBelow(T d, T selectNode){
+  ;
 }
 /******************************************************************/
 
