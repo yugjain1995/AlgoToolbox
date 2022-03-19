@@ -350,12 +350,17 @@ template<typename T>
 class MyBinaryTree{
   public:
     binaryNode<T>* root;
+
+  // Constructor  
     MyBinaryTree();
 
   // Adds node to the closest level to root with available vacancy form left to right
+  // Duplicates allowed
     void addNodeLevel(T d);
 
   // Delete the given node and put the deepest and far right node at deletion location
+  // Incase of duplicates in the tree only the deepeset and farthest right node will be
+  // deleted 
     void deleteNode(T d);
 
   // Search
@@ -422,7 +427,38 @@ void MyBinaryTree<T>::addNodeLevel(T d){
 /******************************************************************/
 template<typename T>
 void MyBinaryTree<T>::deleteNode(T d){
-  ;
+  MyQueueByList<binaryNode<T>*> q;
+  q.enQueue(this->root);
+  binaryNode<T>* temp = NULL;
+  binaryNode<T>* last = NULL; // Parent of deepest far node
+  binaryNode<T>* search_node = NULL;
+
+  while(!q.isEmpty()){
+    temp = q.deQueue();
+
+  // Check if node key is the key to be searched
+    if(temp->data == d) search_node = temp;
+
+    if(temp->left != NULL){
+      last = temp;
+      q.enQueue(temp->left);
+    }
+
+    if(temp->right != NULL){
+      last = temp;
+      q.enQueue(temp->right);
+    }
+  }
+  
+  if(search_node != NULL){
+    search_node->data = temp->data;
+
+    if(last->right == temp) last->right = NULL;
+    else last->left = NULL;
+    
+    delete temp;
+  }
+  else std::cout << "Node with requested key not found!!\n";
 }
 /******************************************************************/
 

@@ -11,16 +11,24 @@ Author - Yug Jain
 /******************************************************************/
 int main()
 {
-  MyBinaryTree<char> t;
-  MyQueueByList<binaryNode<char>*> q;
+  MyBinaryTree<int> t;
+  MyQueueByList<binaryNode<int>*> q;
   std::cout << "====================Testing Binary Tree=====================\n";
-  t.addNodeLevel('A');
-  t.addNodeLevel('B');
-  t.addNodeLevel('C');
-  t.addNodeLevel('D');
 
+// Add nodes
+  for(int i = 0; i < 20; i++){
+    t.addNodeLevel(i);
+  }
+
+// Delete nodes
+  t.deleteNode(5);
+  t.deleteNode(12);
+  t.deleteNode(19);
+  t.deleteNode(16);
+  
+// Print binary tree
   q.enQueue(t.root);
-  binaryNode<char>* temp;
+  binaryNode<int>* temp;
   while(!q.isEmpty()){
     temp = q.deQueue();
     std::cout << temp->data;
