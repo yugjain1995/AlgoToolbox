@@ -11,6 +11,9 @@ elseif(TEST_QUEUE_BY_LIST)
 elseif(TEST_BINARY_TREE)
   add_executable(test test_binary_tree.cpp)
 unset(TEST_BINARY_TREE CACHE)
+elseif(TEST_STACK_BY_LIST)
+  add_executable(test test_stack_by_list.cpp)
+unset(TEST_STACK_BY_LIST CACHE)
 endif()
 
 # Include
