@@ -50,7 +50,7 @@ class MyQueueByArray{
 /******************************************************************/
   template <typename T>
   unsigned int MyQueueByArray<T>::getSize() const{
-    return this->size;
+    return size;
   }
 /******************************************************************/
 
@@ -58,11 +58,11 @@ class MyQueueByArray{
 /******************************************************************/
   template <typename T>
   MyQueueByArray<T>::MyQueueByArray(unsigned int s){
-    this->cap = s;
-    this->size = 0;
-    this->data = new T [this->cap];
-    this->f = -1;
-    this->r = -1;
+    cap = s;
+    size = 0;
+    data = new T [cap];
+    f = -1;
+    r = -1;
   }
 /******************************************************************/
 
@@ -73,7 +73,7 @@ class MyQueueByArray{
   // After queue becomes empty, indexes
   // are reset to -1. This can be used
   // for queue empty check
-    if(this->f == -1) return true;
+    if(f == -1) return true;
     return false;
   }
 /******************************************************************/
@@ -83,10 +83,10 @@ class MyQueueByArray{
   template <typename T>
   bool MyQueueByArray<T>::isFull() const {
     int temp;
-    if(this->r + 1 > this->cap - 1) temp = 0;
-    else temp = this->r + 1;
+    if(r + 1 > cap - 1) temp = 0;
+    else temp = r + 1;
 
-    if(temp == this->f){
+    if(temp == f){
       std::cout << "Queue is Full!!\n";
       return true;
     }
@@ -98,16 +98,16 @@ class MyQueueByArray{
 /******************************************************************/
 template <typename T>
 void MyQueueByArray<T>::rplus(){
-  if(this->r + 1 > this->cap - 1) this->r = 0;
-  else this->r = this->r + 1;
+  if(r + 1 > cap - 1) r = 0;
+  else r = r + 1;
 }
 /******************************************************************/
 
 /******************************************************************/
 template <typename T>
 void MyQueueByArray<T>::fplus(){
-  if(this->f + 1 > this->cap - 1) this->f = 0;
-  else this->f = this->f + 1;
+  if(f + 1 > cap - 1) f = 0;
+  else f = f + 1;
 }
 /******************************************************************/
 
@@ -116,19 +116,19 @@ void MyQueueByArray<T>::fplus(){
   template <typename T>
   void MyQueueByArray<T>::enQueue(T d){
   // If queue is empty
-      if(this->isEmpty()){
-        this->f = 0;
-        this->r = 0;
-        this->data[this->r] = d;
-        this->size++;
+      if(isEmpty()){
+        f = 0;
+        r = 0;
+        data[r] = d;
+        size++;
       }
       
   // If queue not full add the element
-      else if(this->isFull()) return;
+      else if(isFull()) return;
       else{
-        this->rplus();
-        this->data[this->r] = d;
-        this->size++;
+        rplus();
+        data[r] = d;
+        size++;
       }
     
     return;
@@ -141,7 +141,7 @@ void MyQueueByArray<T>::fplus(){
   T MyQueueByArray<T>::deQueue(){
   // Check if queue is empty
     try{
-      if(this->isEmpty()){
+      if(isEmpty()){
         throw "[ERROR] Queue is empty!! - Nothing to deQueue\n";
       }
     }
@@ -155,19 +155,19 @@ void MyQueueByArray<T>::fplus(){
   // Check if the front element is also the rear element
   // If it is rear element then reset f and r to -1
   // because queue will be empty after this removal/deQueue operation
-    if(this->f == this->r){
-      temp = this->f;
-      this->f = -1;
-      this->r = -1;
+    if(f == r){
+      temp = f;
+      f = -1;
+      r = -1;
       std::cout << "Queue has been emptied!!\n";
-      this->size--;
-      return this->data[temp];
+      size--;
+      return data[temp];
     }
     else{
-      temp = this->f;
-      this->fplus();
-      this->size--;
-      return this->data[temp];
+      temp = f;
+      fplus();
+      size--;
+      return data[temp];
     }
   }
 /******************************************************************/
@@ -176,7 +176,7 @@ void MyQueueByArray<T>::fplus(){
 /******************************************************************/
 template <typename T>
 MyQueueByArray<T>::~MyQueueByArray(){
-  delete this->data;
+  delete data;
   std::cout << "Queue by Array deleted\n";
 }
 /******************************************************************/
@@ -235,7 +235,7 @@ class MyQueueByList{
 /******************************************************************/
   template <typename T>
   unsigned int MyQueueByList<T>::getSize() const{
-    return this->size;
+    return size;
   }
 /******************************************************************/
 
@@ -243,9 +243,9 @@ class MyQueueByList{
 /******************************************************************/
   template <typename T>
   MyQueueByList<T>::MyQueueByList(){
-    this->size = 0;
-    this->head = NULL;
-    this->tail = NULL;
+    size = 0;
+    head = NULL;
+    tail = NULL;
   }
 /******************************************************************/
 
@@ -253,7 +253,7 @@ class MyQueueByList{
 /******************************************************************/
   template <typename T>
   Node<T>* MyQueueByList<T>::getHead() const{
-    return this->head;
+    return head;
   }
 /******************************************************************/
 
@@ -261,7 +261,7 @@ class MyQueueByList{
 /******************************************************************/
   template <typename T>
   Node<T>* MyQueueByList<T>::getTail() const{
-    return this->tail;
+    return tail;
   }
 /******************************************************************/
 
@@ -272,7 +272,7 @@ class MyQueueByList{
   // After queue becomes empty, indexes
   // are reset to -1. This can be used
   // for queue empty check
-    if(this->head == NULL) return true;
+    if(head == NULL) return true;
     return false;
   }
 /******************************************************************/
@@ -282,19 +282,19 @@ class MyQueueByList{
   template <typename T>
   void MyQueueByList<T>::enQueue(T d){
   // If queue is empty
-      if(this->isEmpty()){
-        this->head = new Node<T>;
-        this->tail = this->head;
-        this->tail->data = d;
-        this->tail->next = NULL;
-        this->size++;
+      if(isEmpty()){
+        head = new Node<T>;
+        tail = head;
+        tail->data = d;
+        tail->next = NULL;
+        size++;
       }
       else{
-        this->tail->next = new Node<T>; // Create a new node after the current tail
-        this->tail = this->tail->next; // Move tail to newly created node
-        this->tail->next = NULL; // Next for newly created tail node will be NULL
-        this->tail->data = d; // Add the data to new tail node
-        this->size++;
+        tail->next = new Node<T>; // Create a new node after the current tail
+        tail = tail->next; // Move tail to newly created node
+        tail->next = NULL; // Next for newly created tail node will be NULL
+        tail->data = d; // Add the data to new tail node
+        size++;
       }
     
     return;
@@ -307,7 +307,7 @@ class MyQueueByList{
   T MyQueueByList<T>::deQueue(){
   // Check if queue is empty
     try{
-      if(this->isEmpty()){
+      if(isEmpty()){
         throw "[ERROR] Queue is empty!! - Nothing to deQueue\n";
       }
     }
@@ -317,13 +317,13 @@ class MyQueueByList{
     }
 
   // If not empty then extract head node data and move the head pointer to next node
-    T data = this->head->data;
-    Node<T>* temp = this->head;
-    this->head = this->head->next;
+    T data = head->data;
+    Node<T>* temp = head;
+    head = head->next;
     delete temp;
-    this->size--;
-    if(this->head == NULL){
-      this->tail = NULL;
+    size--;
+    if(head == NULL){
+      tail = NULL;
       std::cout << "Queue has been emptied!!\n";
     }
     return data;
@@ -335,9 +335,9 @@ class MyQueueByList{
 template <typename T>
 MyQueueByList<T>::~MyQueueByList(){
   Node<T>* temp;
-  while(this->head != NULL){
-    temp = this->head;
-    this->head = this->head->next;
+  while(head != NULL){
+    temp = head;
+    head = head->next;
     delete temp;
   }
   std::cout << "Queue by List deleted\n";
@@ -396,7 +396,7 @@ class MyBinaryTree{
 /******************************************************************/
 template<typename T>
 MyBinaryTree<T>::MyBinaryTree(){
-  this->root = NULL;
+  root = NULL;
 }
 /******************************************************************/
 
@@ -404,14 +404,14 @@ MyBinaryTree<T>::MyBinaryTree(){
 /******************************************************************/
 template<typename T>
 void MyBinaryTree<T>::addNodeLevel(T d){
-  if(this->root == NULL){
-    this->root = new binaryNode<T>;
-    this->root->data = d;
+  if(root == NULL){
+    root = new binaryNode<T>;
+    root->data = d;
   }
 
   else{
     MyQueueByList<binaryNode<T>*> q;
-    q.enQueue(this->root);
+    q.enQueue(root);
     binaryNode<T>* temp;
 
     while(!q.isEmpty()){
@@ -457,7 +457,7 @@ void MyBinaryTree<T>::addNodeBelow(T d, T selectNode){
 template<typename T>
 void MyBinaryTree<T>::deleteNode(T d){
   MyQueueByList<binaryNode<T>*> q;
-  q.enQueue(this->root);
+  q.enQueue(root);
   binaryNode<T>* temp = NULL;
   binaryNode<T>* last = NULL; // Parent of deepest far node
   binaryNode<T>* search_node = NULL;
