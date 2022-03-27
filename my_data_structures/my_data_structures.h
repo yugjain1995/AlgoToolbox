@@ -221,12 +221,22 @@ class MyQueueByList{
   
   public:
     MyQueueByList();
+
+  // Add nodes
     void enQueue(T d);
+  // Remove nodes
     T deQueue();
+
+  // Search queue
+    bool findQueue(T d) const;
+
+  // Get queue info
     Node<T>* getHead() const;
     Node<T>* getTail() const;  
     unsigned int getSize() const;
     bool isEmpty() const;
+
+  // Destroy queue
     ~MyQueueByList();
 };
 /******************************************************************/
@@ -236,6 +246,19 @@ class MyQueueByList{
   template <typename T>
   unsigned int MyQueueByList<T>::getSize() const{
     return size;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  bool MyQueueByList<T>::findQueue(T d) const{
+    Node<T>* current = head;
+    while(current != NULL){
+      if(current->data == d) return true;
+      current = current->next;
+    }
+    return false;
   }
 /******************************************************************/
 
@@ -269,11 +292,10 @@ class MyQueueByList{
 /******************************************************************/
   template <typename T>
   bool MyQueueByList<T>::isEmpty() const {
-  // After queue becomes empty, indexes
-  // are reset to -1. This can be used
+  // After queue becomes empty, head is
+  // is reset to NULL. This can be used
   // for queue empty check
-    if(head == NULL) return true;
-    return false;
+    return (head == NULL);
   }
 /******************************************************************/
 
@@ -350,6 +372,210 @@ MyQueueByList<T>::~MyQueueByList(){
 
 
 
+
+//===================================================================================
+// LINKED LIST IMPLEMENTATION OF STACK
+//===================================================================================
+
+/******************************************************************/
+// Class template
+/******************************************************************/
+template<typename T>
+class MyStackByList{
+  private:
+    Node<T>* head;
+    Node<T>* tail;
+    unsigned int size;
+  
+  public:
+    MyStackByList();
+
+  // Add nodes
+    void enStack(T d);
+
+  // Search stack
+    bool findStack(T d) const;
+
+  // Get stack info
+    Node<T>* getHead() const;
+    Node<T>* getTail() const;  
+    unsigned int getSize() const;
+    bool isEmpty() const;
+
+  // Print stack
+    void printStack() const;
+
+  // Remove nodes
+    T deStack();
+    
+  // Destroy stack
+    ~MyStackByList();
+};
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  unsigned int MyStackByList<T>::getSize() const{
+    return size;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  bool MyStackByList<T>::findStack(T d) const{
+    Node<T>* current = head;
+    while(current != NULL){
+      if(current->data == d) return true;
+      current = current->next;
+    }
+    return false;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  MyStackByList<T>::MyStackByList(){
+    size = 0;
+    head = NULL;
+    tail = NULL;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  Node<T>* MyStackByList<T>::getHead() const{
+    return head;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  Node<T>* MyStackByList<T>::getTail() const{
+    return tail;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  bool MyStackByList<T>::isEmpty() const {
+  // After stack becomes empty, head
+  // is reset to NULL. This can be used
+  // for queue empty check
+    return (head == NULL);
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  void MyStackByList<T>::enStack(T d){
+  // If queue is empty
+      if(isEmpty()){
+        head = new Node<T>;
+        tail = head;
+        tail->data = d;
+        tail->next = NULL;
+        size++;
+      }
+      else{
+        Node<T>* temp = new Node<T>; // Create a new node above the current head
+        temp->next = head; // Set next node of new node as current head
+        head = temp; // Move head to new node
+        head->data = d; // Add the data to new head node
+        size++;
+      }
+    
+    return;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  T MyStackByList<T>::deStack(){
+  // Check if queue is empty
+    try{
+      if(isEmpty()){
+        throw "[ERROR] Queue is empty!! - Nothing to deStack\n";
+      }
+    }
+    catch(char const* s){
+      std::cerr << s;
+      std::terminate();
+    }
+
+  // If not empty then extract head node data and move the head pointer to next node
+    T data = head->data;
+    Node<T>* temp = head;
+    head = head->next;
+    delete temp;
+    size--;
+    if(head == NULL){
+      tail = NULL;
+      std::cout << "Queue has been emptied!!\n";
+    }
+    return data;
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+  template <typename T>
+  void MyStackByList<T>::printStack() const{
+    Node<T>* current;
+
+  // Check that stack not empty
+    if(!isEmpty()){
+      current = head;
+      std::cout << current->data << " <--head\n";
+      current = current->next;
+    }
+    else{
+      std::cout << "Stack is empty!!\n";
+      return;
+    }
+
+  // Loop if current not NULL
+    if (current != NULL){
+      while(true){
+        if(current->next == NULL){
+          std::cout << current->data << " <--tail\n";
+          break;
+        }
+        else std::cout << current->data << "\n";
+        current = current->next;
+      }
+    }
+    else std::cout << "<--tail\n";
+  }
+/******************************************************************/
+
+
+/******************************************************************/
+template <typename T>
+MyStackByList<T>::~MyStackByList(){
+  Node<T>* temp;
+  while(head != NULL){
+    temp = head;
+    head = head->next;
+    delete temp;
+  }
+  std::cout << "Stack by List deleted\n";
+}
+/******************************************************************/
+
+//===================================================================================
+// END
+//===================================================================================
+
+
+
 //===================================================================================
 // BINARY TREE
 //===================================================================================
@@ -385,8 +611,10 @@ class MyBinaryTree{
     void deleteNode(T d);
 
   // Search
-    void breadthSearch(T d);
-    void depthSearch(T d);
+    // Return the pointer to the node which had required data
+    // Only returnsthe pointer to first found node
+      binaryNode<T>* breadthSearch(T d);
+      binaryNode<T>* depthSearch(T d);
 
     ~MyBinaryTree();
 };
@@ -494,7 +722,7 @@ void MyBinaryTree<T>::deleteNode(T d){
 
 /******************************************************************/
 template<typename T>
-void MyBinaryTree<T>::breadthSearch(T d){
+binaryNode<T>* MyBinaryTree<T>::breadthSearch(T d){
   ;
 }
 /******************************************************************/
@@ -502,8 +730,34 @@ void MyBinaryTree<T>::breadthSearch(T d){
 
 /******************************************************************/
 template<typename T>
-void MyBinaryTree<T>::depthSearch(T d){
-  ;
+ binaryNode<T>* MyBinaryTree<T>::depthSearch(T d){
+  MyQueueByList<binaryNode<T>*> L; // Queue of Expanded nodes of binary tree
+  MyQueueByList<binaryNode<T>*> S; // Queue of to be expanded nodes of binary tree
+  binaryNode<T>* current; // Cuurent node to be expanded
+// Initialize to be expanded list
+  S.enQueue(root);
+
+// Expand in depth first manner
+  while(!S.isEmpty){
+  // Get the first in queue
+    current = S.deQueue();
+
+  // If current node data == search data then return
+    if(current->data == d){
+      std::cout << "Node found!!\n";
+      return current;
+    }
+  // Else expand the current node
+    else{
+      if(current->left != NULL && !L.findQueue(current->left->data)){
+        S.enQueue(current->left);
+      }
+      else if(current->right != NULL && !L.findQueue(current->right->data)){
+        S.enQueue(current->right);
+      }
+      else L.enQueue(current);
+    }
+  }
 }
 /******************************************************************/
 
